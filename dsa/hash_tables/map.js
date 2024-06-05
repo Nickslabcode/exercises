@@ -10,7 +10,6 @@ console.log(map.delete('name'));
 console.log(map.entries());
 map.clear();
 
-
 const countOfOccurrences = array => {
   const map = new Map();
   for (const item of array) {
@@ -18,19 +17,15 @@ const countOfOccurrences = array => {
     map.set(item, count + 1);
   }
   return map;
-}
+};
 
 const occurrences = ['js', 'c++', 'js', 'c', 'java', 'c'];
 // console.log(countOfOccurrences(occurrences))
 
-const groupBy = (
-  data,
-  keySelector,
-  valueSelector = (x => x)
-) => {
+const groupBy = (data, keySelector, valueSelector = x => x) => {
   const map = new Map();
 
-  for (const obj of data) {
+  data.forEach(obj => {
     const key = keySelector(obj);
     const value = valueSelector(obj);
 
@@ -39,20 +34,24 @@ const groupBy = (
     }
 
     map.get(key).push(value);
-  }
+  });
 
   return map;
-}
+};
 
 const cities = [
-  { country: 'BG', city: 'Plovdiv'},
-  { country: 'BG', city: 'Sofia'},
-  { country: 'UK', city: 'London'},
-  { country: 'US', city: 'Chicago'},
-  { country: 'UK', city: 'Manchester'},
-]
+  { country: 'BG', city: 'Plovdiv' },
+  { country: 'BG', city: 'Sofia' },
+  { country: 'UK', city: 'London' },
+  { country: 'US', city: 'Chicago' },
+  { country: 'UK', city: 'Manchester' },
+];
 
 const groupByCountry = groupBy(cities, c => c.country);
-const groupByCountry2 = groupBy(cities, c => c.country, c => c.city);
+const groupByCountry2 = groupBy(
+  cities,
+  c => c.country,
+  c => c.city
+);
 // console.log(groupByCountry);
 console.log(groupByCountry2);
