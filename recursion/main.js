@@ -70,4 +70,4 @@ const fibFast = (number, memo = new Map()) => {
   return memo.get(number);
 }
 
-fibFast(5);
+fibFast(8);
